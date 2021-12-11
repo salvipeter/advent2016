@@ -97,7 +97,7 @@ void fillDistances(Distances &distances, int start) {
 
 // For debug
 void printState(int n) {
-  std::cout << std::bitset<22>(n) << ":\n" << std::endl;
+  std::cout << std::bitset<size>(n) << ":\n" << std::endl;
   for (int i = 3; i >= 0; --i) {
     if (get(n, 0) == i)
       std::cout << '*';
