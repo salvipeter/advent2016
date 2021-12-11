@@ -1,0 +1,97 @@
+Paper-and-pencil solution
+-------------------------
+Generators are uppercase, microchips are lowercase; ^/_ means going up/down.
+Moving n > 1 items requires 2n-3 steps.
+
+ 4
+ 3 bcde
+ 2 BCDE
+*1 Aa
+
+Aa^ a^  [2]
+
+ 4
+*3 abcde
+ 2 ABCDE
+ 1
+
+cde_ cde_ c^ [7]
+
+ 4
+ 3 ab
+*2 ABCcDE
+ 1 de
+
+AB^ Aa^ A_ A_ AE^ AE^ E_ E_ DE^ DE^ D_ Bb^ E_ [13]
+
+ 4 AaBb
+*3 DE
+ 2 Cc
+ 1 de
+
+DE^ D_ D_ Cc^ Cc^ E_ E_ DE^ DE^ [9]
+
+*4 AaBbCcDE
+ 3
+ 2
+ 1 de
+
+a_ a_ a_ ade^ ade^ ade^ [12]
+
+=> 2 + 7 + 13 + 9 + 12 = 43 steps
+
+The optimal solution cannot be shorter than 27 steps
+(Aa^ [1] + AaBCDE^ [9] + AaBbCcDdEe^ [17] = 27)
+
+Solution found by the C program:
+
+Aa^ a^ [2]
+
+ 4 
+*3 abcde
+ 2 ABCDE
+ 1 
+
+abd^ b_ c_ BE^ [6]
+
+ 4 ad
+*3 BbEe
+ 2 ACcD
+ 1 
+
+Bb_ AD^ AD^ Dd_ DE^ a_ [6]
+
+ 4 ADE
+*3 ade
+ 2 BbCc
+ 1 
+
+ae^ D_ D_ bc^ [4]
+
+ 4 AaEe
+*3 bcd
+ 2 BCD
+ 1 
+
+b_ CD^ CD^ a_ ad^ C_ [6]
+
+ 4 AaDdEe
+*3 Cc
+ 2 Bb
+ 1 
+
+C_ BC^ BC^ a_ ac^ [5]
+
+*4 AaBCcDdEe
+ 3 
+ 2 b
+ 1 
+
+a_ a_ ab^ ab^ [4]
+
+*4 AaBbCcDdEe
+ 3 
+ 2 
+ 1 
+
+=> 2 + 6 + 6 + 4 + 6 + 5 + 4 = 33 steps
